@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import ColorSwitch from './components/color_switch';
+import { Button, Grid, Skeleton, Container } from '@mantine/core';
+import HeroContentLeft from './components/hero_header';
+import Counter from './components/counter';
+import Einkaufsliste from './components/einkaufsliste';
 
 function App() {
+
+  const child = <Skeleton height={140} radius="md" animate={false} />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HeroContentLeft/>
+      
+      <Container my="md">
+      <Grid>
+        <Grid.Col xs={12}><ColorSwitch/></Grid.Col>
+        <Grid.Col xs={4}><Counter/></Grid.Col>
+        <Grid.Col xs={8}><Einkaufsliste/></Grid.Col>
+        <Grid.Col xs={8}>{child}</Grid.Col>
+        <Grid.Col xs={4}>{child}</Grid.Col>
+        <Grid.Col xs={3}>{child}</Grid.Col>
+        <Grid.Col xs={3}>{child}</Grid.Col>
+        <Grid.Col xs={6}>{child}</Grid.Col>
+      </Grid>
+    </Container>
     </div>
   );
 }
