@@ -13,7 +13,7 @@ export default function Einkaufsliste() {
 
     return(
         <div>
-            <h3>Einkaufsliste</h3>
+            <h1>Einkaufsliste</h1>
             <ul>
                 {stateEinkaufsliste.map((item, index) => 
                     <li key={index}>{item}</li>

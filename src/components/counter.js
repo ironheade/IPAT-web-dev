@@ -1,3 +1,4 @@
+import { Button } from '@mantine/core';
 import { useState } from 'react'
 
 function Counter() {
@@ -14,9 +15,10 @@ function Counter() {
   
     return (
       <div>
+        <h1>Zähler</h1>
         <h3>{count}</h3>
-        <button onClick={() => increaseCount()}>+1</button>
-        <button onClick={() => decreaseCount()}>-1</button>
+        <Button onClick={() => increaseCount()}>+1</Button>
+        <Button onClick={() => decreaseCount()}>-1</Button>
 
       </div>
     );

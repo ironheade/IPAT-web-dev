@@ -2,10 +2,6 @@ import { useState } from 'react'
 
 function ColorSwitch() {
 
-    const [count, setCount] = useState(0)
-    const liste = ["Apfel",
-                  "Banane"
-  ]
   const [backgroundColor,setBackgroundColor] = useState("#fff")
   const farbliste = [
       {
@@ -41,11 +37,10 @@ function ColorSwitch() {
           value: "#fff"
       }
   ]
-  const [farben, setFarben] = useState(farbliste)
 
     return (
       <div style={{backgroundColor:backgroundColor}}>
-        <h1>IPAT App</h1>
+        <h1>Farbenwechsel</h1>
 
           <table>
             <tbody>
@@ -54,7 +49,7 @@ function ColorSwitch() {
                 <th>value</th>
                 <th>button</th>
               </tr>
-              {farben.map((item, index) =>
+              {farbliste.map((item, index) =>
                 
                 <tr key={index}>
                   <td>{item.color}</td>
@@ -63,12 +58,7 @@ function ColorSwitch() {
                 </tr>
   
                 )}
-              <tr>
-                <td>
-                </td>
-                <td>
-                </td>
-              </tr>
+
             </tbody>
           </table>
       </div>

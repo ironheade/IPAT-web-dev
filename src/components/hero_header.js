@@ -5,18 +5,18 @@ const useStyles = createStyles((theme) => ({
   hero: {
     position: 'relative',
     backgroundImage:
-      'url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)',
+      'url(https://images.unsplash.com/photo-1600877326105-82286e823c29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
 
   container: {
-    height: 700,
+    height: "100vh",
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
-    paddingBottom: theme.spacing.xl * 6,
+    paddingBottom: theme.spacing.xl * 0,
     zIndex: 1,
     position: 'relative',
 
@@ -43,6 +43,10 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  spacer: {
+    height:theme.spacing.xl * 6
+  },
+
   description: {
     color: theme.white,
     maxWidth: 600,
@@ -62,7 +66,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function HeroContentLeft() {
+export default function HeroContentLeft(props) {
   const { classes } = useStyles();
 
   return (
@@ -73,15 +77,15 @@ export default function HeroContentLeft() {
         zIndex={0}
       />
       <Container className={classes.container}>
-        <Title className={classes.title}>A fully featured React components library</Title>
+        <Title className={classes.title}>Institut für Partikeltechnik App</Title>
         <Text className={classes.description} size="xl" mt="xl">
-          Build fully functional accessible web applications faster than ever – Mantine includes
-          more than 120 customizable components and hooks to cover you in any situation
+          Eine kleine Website erarbeitet in einem Workshop für das Institut für Partikeltechnik. Es werden Grundzüge der Website Programmierung vermittelt.
         </Text>
 
-        <Button variant="gradient" size="xl" radius="xl" className={classes.control}>
-          Get started
+        <Button onClick={props.start} variant="gradient" size="xl" radius="xl" className={classes.control}>
+          los gehts
         </Button>
+        <div className={classes.spacer}/>
       </Container>
     </div>
   );
