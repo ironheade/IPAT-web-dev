@@ -39,8 +39,8 @@ function ColorSwitch() {
   ]
 
     return (
-      <div style={{backgroundColor:backgroundColor}}>
-        <h1>Farbenwechsel</h1>
+      <div style={{backgroundColor:backgroundColor, color: backgroundColor === "#000" && "white"}}>
+        <h1 style={{color: backgroundColor === "#000" && "white"}}>Farbenwechsel</h1>
 
           <table>
             <tbody>
@@ -54,7 +54,7 @@ function ColorSwitch() {
                 <tr key={index}>
                   <td>{item.color}</td>
                   <td>{item.value}</td>
-                  <td><button onClick={() => setBackgroundColor(item.value) & console.log(backgroundColor)} style={{backgroundColor:item.value}}>switch color</button></td>
+                  <td><button onClick={() => setBackgroundColor(item.value) & console.log(backgroundColor)} style={{backgroundColor:item.value, color: item.value === "#000" && "white"}}>switch color</button></td>
                 </tr>
   
                 )}
