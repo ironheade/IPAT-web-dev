@@ -1,0 +1,21 @@
+version: "3"
+services:
+  frontend:
+    image: ipat-app
+    ports: 
+      - "80:3000"
+    networks:
+      - ipat
+    depends_on:
+      - backend
+
+  backend:
+    image: ipat-app-backend
+    ports: 
+      - "5000:5000"
+    networks:
+      - prozell-app
+
+networks:
+  ipat:
+    driver: bridge
