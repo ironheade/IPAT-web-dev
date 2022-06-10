@@ -1,20 +1,20 @@
 version: "3"
 services:
-  frontend:
+  frontend-ipat:
     image: ipat-app
-    ports: 
+    ports:
       - "80:3000"
     networks:
       - ipat
     depends_on:
-      - backend
+      - backend-ipat
 
-  backend:
+  backend-ipat:
     image: ipat-app-backend
-    ports: 
-      - "5000:5000"
+    ports:
+      - "5001:5001"
     networks:
-      - prozell-app
+      - ipat
 
 networks:
   ipat:

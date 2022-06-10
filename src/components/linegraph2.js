@@ -28,9 +28,9 @@ const series = [
   },
 ];
 
-export default class LineGraph2 extends PureComponent {
+export default function LineGraph2() {
 
-  render() {
+
     return (
 
         <LineChart width={500} height={300}>
@@ -45,5 +45,5 @@ export default class LineGraph2 extends PureComponent {
         </LineChart>
 
     );
-  }
+
 }

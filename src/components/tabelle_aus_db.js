@@ -3,12 +3,23 @@ import { Button, NumberInput, Table, TextInput } from '@mantine/core';
 
 export default function TabelleAusDB(props){
 
-    const [zeile,setZeile] = useState({Beschreibung:"",Wert:"",Einheit:""})
+    const [zeile,setZeile] = useState({Teilnehmer:"",Institut:"",Vorerfahrung:NaN})
     const [tabelle,setTabelle] = useState(props.tabelle)
     function Neue_Zeile(){
         const newId = parseInt(tabelle.map(item => item.id).slice(-1))+1
         setTabelle([...tabelle,{id:newId, ...zeile}])
+        fetch('/Datenbank_write', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              Teilnehmer:zeile.Teilnehmer,
+              Institut:zeile.Institut,
+              Vorerfahrung:zeile.Vorerfahrung
+            }),
+          });
     }
+
+
 
     return(
         <>
@@ -24,16 +35,16 @@ export default function TabelleAusDB(props){
                 {tabelle.map((item,index) =>
                 <tr key={index}>
                     <td>{item.id}</td>
-                    <td>{item.Beschreibung}</td>
-                    <td>{item.Wert}</td>
-                    <td>{item.Einheit}</td>
+                    <td>{item.Teilnehmer}</td>
+                    <td>{item.Institut}</td>
+                    <td>{item.Vorerfahrung}</td>
                 </tr>
                 )}
                 <tr>
-                    <td><Button onClick={()=> Neue_Zeile()}>+</Button></td>
-                    <td><TextInput onChange={(e)=>setZeile({...zeile,Beschreibung:e.target.value})}/></td>
-                    <td><NumberInput onChange={(e)=>setZeile({...zeile,Wert:e})}/></td>
-                    <td><TextInput onChange={(e)=>setZeile({...zeile,Einheit:e.target.value})}/></td>
+                    <td><Button disabled={isNaN(zeile.Vorerfahrung) ? true:false} onClick={()=> Neue_Zeile()}>+</Button></td>
+                    <td><TextInput onChange={(e)=>setZeile({...zeile,Teilnehmer:e.target.value})}/></td>
+                    <td><TextInput onChange={(e)=>setZeile({...zeile,Institut:e.target.value})}/></td>
+                    <td><NumberInput onChange={(e)=>setZeile({...zeile,Vorerfahrung:e})}/></td>
                 </tr>
             </tbody>
         </Table>

@@ -30,3 +30,22 @@ def get_table():
     db.close()
             
     return {'tabelle':tabelle}
+
+@app.route('/Datenbank_write',methods=['POST'])
+def write_table():
+    Teilnehmer = request.get_json()["Teilnehmer"]
+    Institut = request.get_json()["Institut"]
+    Vorerfahrung = request.get_json()["Vorerfahrung"]
+    
+    db = sqlite3.connect(os.path.abspath("test_db.db"))
+    cursor = db.cursor()
+    query = (f"INSERT INTO test_table (Teilnehmer, Institut, Vorerfahrung) VALUES ('{Teilnehmer}','{Institut}',{Vorerfahrung})")
+    #query = ("INSERT INTO test_table (Teilnehmer, Institut, Vorerfahrung) VALUES ('Arag','Orog',4)")
+
+    cursor.execute(query)
+    print (query)
+    
+    db.commit()
+    db.close()
+    
+    return "bla"

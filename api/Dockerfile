@@ -19,7 +19,7 @@ RUN pip install -r requirements.txt
 WORKDIR /api
 COPY . /api
 #kann raus
-EXPOSE 5000
+EXPOSE 5001
 #kann raus
 CMD ["python", "-m","flask","run","--host=0.0.0.0"]
 #CMD ["python", "-m" ,"flask","run","--host=0.0.0.0"]

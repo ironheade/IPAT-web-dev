@@ -21,9 +21,9 @@ function App() {
 
   useEffect(() => {
     fetch('/time').then(res => res.json())
-    .then(data => {
-      setCurrentTime(data.time);
-    });
+      .then(data => {
+        setCurrentTime(data.time);
+      });
     tabelle_abrufen("test_table")
   }, []);
 
@@ -39,7 +39,7 @@ function App() {
     console.table(JSON.parse(data.tabelle));
     setTabelle(JSON.parse(data.tabelle))
   }
-  
+
   function handleBackClick(ref) {
     introduction.current.scrollIntoView({ behavior: 'smooth' })
   }
@@ -47,31 +47,44 @@ function App() {
 
   return (
     <div>
-      <HeroContentLeft start={() => handleBackClick("introduction")}/>
+      <HeroContentLeft start={() => handleBackClick("introduction")} />
       <div ref={introduction} id="introduction">
-      {/*<p>The current time is {currentTime}.</p>*/}
-      <Container my="md">
-      <Grid>
-        <Grid.Col xs={12}><Einleitung time={currentTime}/></Grid.Col>
-        <Grid.Col xs={4}><ColorSwitch/></Grid.Col>
-        <Grid.Col xs={4}><Counter/></Grid.Col>
-        <Grid.Col xs={4}><Einkaufsliste/></Grid.Col>
-        <Grid.Col xs={6}><Linegraph/></Grid.Col>
-        <Grid.Col xs={6}><LineGraph2/></Grid.Col>
-        <Grid.Col xs={12}>{tabelle === null ? child : <TabelleAusDB tabelle={tabelle}/>}</Grid.Col>
-        <Grid.Col xs={3}>{child}</Grid.Col>
-        <Grid.Col xs={3}>{child}</Grid.Col>
-        <Grid.Col xs={6}>{child}</Grid.Col>
-        <Grid.Col xs={8}>{child}</Grid.Col>
-        <Grid.Col xs={4}>{child}</Grid.Col>
-        <Grid.Col xs={3}>{child}</Grid.Col>
-        <Grid.Col xs={3}>{child}</Grid.Col>
-        <Grid.Col xs={6}>{child}</Grid.Col>
-      </Grid>
-    </Container>
-    </div>
+        {/*<p>The current time is {currentTime}.</p>*/}
+        <Container my="md">
+          <Grid>
+            <Grid.Col xs={12}><Einleitung time={currentTime} /></Grid.Col>
+            <Grid.Col xs={12}>
+            <Grid.Col xs={12}>{tabelle === null ? child : <TabelleAusDB tabelle={tabelle} />}</Grid.Col>
+            <div className="spinner">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              </Grid.Col>
+            <Grid.Col xs={4}><ColorSwitch /></Grid.Col>
+            <Grid.Col xs={4}><Counter /></Grid.Col>
+            <Grid.Col xs={4}><Einkaufsliste /></Grid.Col>
+            <Grid.Col xs={6}><Linegraph /></Grid.Col>
+            <Grid.Col xs={6}><LineGraph2 /></Grid.Col>
+            
+            <Grid.Col xs={3}>{child}            </Grid.Col>
+            <Grid.Col xs={3}>{child}</Grid.Col>
+            <Grid.Col xs={6}>{child}</Grid.Col>
+            <Grid.Col xs={8}>{child}</Grid.Col>
+            <Grid.Col xs={4}>{child}</Grid.Col>
+            <Grid.Col xs={3}>{child}</Grid.Col>
+            <Grid.Col xs={3}>{child}</Grid.Col>
+            <Grid.Col xs={6}>{child}</Grid.Col>
+          </Grid>
+        </Container>
+      </div>
 
-    <FooterLinks/>
+      <FooterLinks />
     </div>
   );
 }
