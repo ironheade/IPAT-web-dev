@@ -5,7 +5,7 @@ FROM node:16.14.0-alpine
 
 # set working directory
 WORKDIR /app
-EXPOSE 3001
+EXPOSE 3000
 
 # add `/app/node_modules/.bin` to $PATH
 #ENV PATH /app/node_modules/.bin:$PATH
@@ -15,7 +15,7 @@ EXPOSE 3001
 COPY package.json ./
 #COPY package-lock.json ./
 #RUN npm install
-RUN npm install
+RUN yarn install
 
 # add app
 #COPY . .
@@ -25,4 +25,4 @@ COPY . ./
 
 # start app
 #CMD ["http-server", "dist"]
-CMD ["npm", "start"]
+CMD ["yarn", "start"]

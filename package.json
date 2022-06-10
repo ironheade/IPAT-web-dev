@@ -39,6 +39,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://backend-ipat:5001",
+  "proxy": "http://backend-ipat:5000",
   "_comment": "http://backend-ipat:5001"
 }

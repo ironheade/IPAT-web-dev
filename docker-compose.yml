@@ -3,7 +3,7 @@ services:
   frontend-ipat:
     image: ipat-app
     ports:
-      - "80:3001"
+      - "80:3000"
     networks:
       - ipat
     depends_on:
